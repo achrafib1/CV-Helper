@@ -1,17 +1,35 @@
-research_task:
+manegment_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is 2024.
+    Coordinate the interaction process with the user to gather job descriptions and resumes. 
+    Delegate the analysis tasks to specialized agents and validate their results to ensure accuracy. 
+    Provide the user with comprehensive feedback including scores and suggestions based on the analyzed data. 
+    Engage with the user to obtain job descriptions and resumes. Assign the job description to the Job Analyst Agent for detailed analysis. 
+    Assign the resume to the Resume Analyst Agent for evaluation and ensure both analyses are completed before proceeding. 
+    Review the analyses provided by the Resume Analyst Agent, confirm the accuracy and consistency of the results, 
+    and compile a final report with the score out of 10 and recommendations for improvement. 
+    Present the results to the user in a clear and concise manner.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    A comprehensive final report including a score out of 10 based on the resume's fit to the job description, 
+    and clear and actionable feedback and recommendations for improving the resume.
+  agent: manager
 
-reporting_task:
+job_analyses_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Analyze job descriptions provided by the manager agent to extract key requirements, skills, and experience levels necessary for the roles. 
+    Thoroughly examine the job descriptions to highlight essential skills, responsibilities, and qualifications. 
+    Provide a detailed analysis that forms the foundation for effective resume evaluations. 
+    Ensure the analysis is accurate, clear, and concise, supporting the overall goal of delivering high-quality feedback to clients.
   expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A detailed analysis highlighting the key requirements, skills, responsibilities, and qualifications necessary for the job role, 
+    which serves as the foundation for evaluating resumes.
+  agent: job_analyst
+
+resume_analyses_task:
+  description: >
+    Analyze resumes provided by the manager agent against job description analyses provided by the Job Analyst Agent to provide a score out of 10 and offer clear, 
+    concise feedback and recommendations for improvement. Ensure that both the resume and job description analysis are thoroughly evaluated to identify strengths, 
+    weaknesses, and areas for improvement. Provide actionable feedback to help enhance the resume based on the job description requirements, 
+    ensuring accurate and comprehensive evaluations.
+  expected_output: >
+    A score out of 10 based on the resume's fit to the job description, along with clear and actionable feedback and recommendations for improving the resume.
+  agent: resume_analyst
