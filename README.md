@@ -2,6 +2,8 @@
 
 This project provides a chatbot that helps users assess how well their CV matches a given job description. The chatbot provides a score and actionable suggestions to help users improve their CVs.
 
+!['image_app'](static/images/cvhelper_exmaple.png)
+
 ## Features
 
 - **CV Analysis:** Analyzes a user's CV against a job description.
@@ -25,7 +27,7 @@ This project provides a chatbot that helps users assess how well their CV matche
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/addd/CV-Helper
+    git clone https://github.com/achrafib1/CV-Helper
     cd CV-Helper # Replace 'your-repository' with 'CV-Helper'
     ```
 
