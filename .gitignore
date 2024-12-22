@@ -13,6 +13,7 @@ __pycache__/
 # Ignore Python virtual environments
 env/
 .venv/
+chroma_db/
 
 
 # Ignore Jupyter notebook checkpoints

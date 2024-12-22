@@ -1,35 +1,15 @@
-manegment_task:
+assistant_task:
   description: >
-    Coordinate the interaction process with the user to gather job descriptions and resumes. 
-    Delegate the analysis tasks to specialized agents and validate their results to ensure accuracy. 
-    Provide the user with comprehensive feedback including scores and suggestions based on the analyzed data. 
-    Engage with the user to obtain job descriptions and resumes. Assign the job description to the Job Analyst Agent for detailed analysis. 
-    Assign the resume to the Resume Analyst Agent for evaluation and ensure both analyses are completed before proceeding. 
-    Review the analyses provided by the Resume Analyst Agent, confirm the accuracy and consistency of the results, 
-    and compile a final report with the score out of 10 and recommendations for improvement. 
-    Present the results to the user in a clear and concise manner.
+    Analyze the user's message. The user's message is: {user_message}. Here is the context of our conversation: {context}. 
+    Determine if a CV or a Job Description is provided in the message. If both CV and Job Description are provided, 
+    provide a score (out of 10) for how well the CV matches the job description, and provide 2-3 specific, actionable suggestions to improve the CV. 
+    If either the CV or Job Description is missing, or if the user has not provided any information related to the CV evaluation, 
+    then respond appropriately and maintain the flow of the conversation. This might involve asking for clarification,
+    asking for more information, or responding to a greeting.
   expected_output: >
-    A comprehensive final report including a score out of 10 based on the resume's fit to the job description, 
-    and clear and actionable feedback and recommendations for improving the resume.
-  agent: manager
-
-job_analyses_task:
-  description: >
-    Analyze job descriptions provided by the manager agent to extract key requirements, skills, and experience levels necessary for the roles. 
-    Thoroughly examine the job descriptions to highlight essential skills, responsibilities, and qualifications. 
-    Provide a detailed analysis that forms the foundation for effective resume evaluations. 
-    Ensure the analysis is accurate, clear, and concise, supporting the overall goal of delivering high-quality feedback to clients.
-  expected_output: >
-    A detailed analysis highlighting the key requirements, skills, responsibilities, and qualifications necessary for the job role, 
-    which serves as the foundation for evaluating resumes.
-  agent: job_analyst
-
-resume_analyses_task:
-  description: >
-    Analyze resumes provided by the manager agent against job description analyses provided by the Job Analyst Agent to provide a score out of 10 and offer clear, 
-    concise feedback and recommendations for improvement. Ensure that both the resume and job description analysis are thoroughly evaluated to identify strengths, 
-    weaknesses, and areas for improvement. Provide actionable feedback to help enhance the resume based on the job description requirements, 
-    ensuring accurate and comprehensive evaluations.
-  expected_output: >
-    A score out of 10 based on the resume's fit to the job description, along with clear and actionable feedback and recommendations for improving the resume.
-  agent: resume_analyst
+    Your output should include:
+    - If both CV and Job Description were present:
+        - A score out of 10 for the CV's fit to the job description.
+        - 2-3 actionable suggestions for CV improvement.
+    - If either or both are missing, or the user query is not about CV evaluation, then your response should either be asking for the required information
+      or addressing the user query appropriately. Maintain the conversation flow appropriately.
