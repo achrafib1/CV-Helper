@@ -28,7 +28,7 @@ This project provides a chatbot that helps users assess how well their CV matche
 
     ```bash
     git clone https://github.com/achrafib1/CV-Helper
-    cd CV-Helper # Replace 'your-repository' with 'CV-Helper'
+    cd CV-Helper
     ```
 
 2.  **Set up a virtual environment:** We recommend using virtual environments for your projects. Choose one of the following methods:
