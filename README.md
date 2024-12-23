@@ -39,7 +39,7 @@ This project provides a chatbot that helps users assess how well their CV matche
       uv venv --python 3.11
       ```
 
-      We recommend `uv` for creating virtual environments for faster performance. `uv` is an extremely fast Python package and project manager written in Rust. For more details on installing `uv`, please refer to the [official uv installation guide](https://astral.sh/uv/installation).
+      We recommend `uv` for creating virtual environments for faster performance. `uv` is an extremely fast Python package and project manager written in Rust. For more details on installing `uv`, please refer to the [official uv installation guide](https://docs.astral.sh/uv/getting-started/installation/).
 
     - **Using Python's built-in `venv` (Cross-Platform):**
       ```bash
