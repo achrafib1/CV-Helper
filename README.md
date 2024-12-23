@@ -124,10 +124,18 @@ After completing the installation steps based on your chosen approach, follow th
 #### Method 1: Running with Virtual Environment
 
 1.  **Run the main app:**
-    ```bash
-    streamlit run app.py
-    ```
-    This will start the Streamlit application in your default web browser. You can interact with the chatbot from the interface.
+
+    - **Linux/macOS:**
+      ```bash
+      streamlit run src/app.py
+      ```
+    - **Windows:**
+
+      ```bash
+      streamlit run src\app.py
+      ```
+
+      This will start the Streamlit application in your default web browser. You can interact with the chatbot from the interface.
 
 #### Method 2: Running with Docker
 
@@ -155,7 +163,7 @@ The Streamlit application will be available at `http://localhost:8501` in your b
 
 **User Input:**
 
-````
+```
 
 Here is the Job Description: We are looking for a skilled software engineer with 5+ years of experience in Python, a strong background in cloud technologies, and excellent communication skills. The ideal candidate will have experience with agile development methodologies and be a team player.
 
@@ -214,5 +222,3 @@ Contributions to this project are welcome. Please follow these guidelines:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
-```
-````
