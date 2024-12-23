@@ -10,7 +10,7 @@ st.markdown(
         a[href*="/home"]{
             display: none;
         }
-        a[href*="/face_detection"]{
+        a[href*="/chatbot_page"]{
             display: none;
         }
     </style>
