@@ -33,37 +33,55 @@ This project provides a chatbot that helps users assess how well their CV matche
 
 2.  **Set up a virtual environment:** We recommend using virtual environments for your projects. Choose one of the following methods:
 
-    - **Using Python's built-in `venv` (Cross-Platform):**
+    - **Using `uv` (Cross-Platform, Recommended for faster performance):**
 
+      ```bash
+      uv venv --python 3.11
+      ```
+
+      We recommend `uv` for creating virtual environments for faster performance. `uv` is an extremely fast Python package and project manager written in Rust. For more details on installing `uv`, please refer to the [official uv installation guide](https://astral.sh/uv/installation).
+
+    - **Using Python's built-in `venv` (Cross-Platform):**
       ```bash
       python -m venv .venv
       ```
-
-    - **Using `uv` (Cross-Platform):**
-      ```bash
-      uv venv
-      ```
+      This is a more standard way of creating virtual environments using python's built-in tools, and does not require any additional installation.
 
 3.  **Activate the virtual environment and install dependencies:**
 
-    - **Linux/macOS:**
-
-      ```bash
-      source .venv/bin/activate
-      uv pip install -r requirements.txt
-      ```
-
-    - **Windows:**
-
-      ```bash
-      .venv\Scripts\activate
-      uv pip install -r requirements.txt
-      ```
-
+    - **If using `uv`:**
+      - **Linux/macOS:**
+        ```bash
+        source .venv/bin/activate
+        uv pip install -r requirements.txt
+        ```
+      - **Windows:**
+        ```bash
+        .venv\Scripts\activate
+        uv pip install -r requirements.txt
+        ```
+      - **Verify installation:**
+        ```bash
+        uv pip check
+        ```
+    - **If using `venv`:**
+      - **Linux/macOS:**
+        ```bash
+        source .venv/bin/activate
+        pip install -r requirements.txt
+        ```
+      - **Windows:**
+        ```bash
+        .venv\Scripts\activate
+        pip install -r requirements.txt
+        ```
     - **Verify installation:**
+
       ```bash
-      uv pip check
+       pip check
+
       ```
+
     - **Ensure that the `requirements.txt` file exists at the root of your project and contains the list of all required dependencies.**
 
 4.  **Set up a `.env` file:**
