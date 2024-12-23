@@ -131,24 +131,25 @@ After completing the installation steps based on your chosen approach, follow th
 
 #### Method 2: Running with Docker
 
-    ```bash
-    docker run -d -p 8501:8501  -e MODEL="gpt-4o-mini"  -e OPENAI_API_KEY="sk-your-openai-api-key" cv-helper
-    ```
-    -  `-d`: Runs the container in detached mode (in the background).
-    -  `-p 8501:8501`: Maps port 8501 on your host machine to port 8501 on the container, which is where the Streamlit app runs.
-    -  `-e MODEL="gpt-4o-mini"`: Sets the environment variable `MODEL` to the value `gpt-4o-mini` inside the Docker container.
-    -  `-e OPENAI_API_KEY="sk-your-openai-api-key"`: Sets the environment variable `OPENAI_API_KEY` to the value you want inside the Docker container. **Remember to replace `sk-your-openai-api-key` with your actual OpenAI API key.**
-    -  `cv-helper`: Specifies the name of the Docker image to run.
+```bash
+docker run -d -p 8501:8501  -e MODEL="gpt-4o-mini"  -e OPENAI_API_KEY="sk-your-openai-api-key" cv-helper
+```
 
-    **Note:** When running the Docker container, instead of passing environment variables directly as shown above, you can also mount a `.env` file into the container. If you choose this approach, create a `.env` file in your root directory with your configurations and mount this file using the following command structure:
+- `-d`: Runs the container in detached mode (in the background).
+- `-p 8501:8501`: Maps port 8501 on your host machine to port 8501 on the container, which is where the Streamlit app runs.
+- `-e MODEL="gpt-4o-mini"`: Sets the environment variable `MODEL` to the value `gpt-4o-mini` inside the Docker container.
+- `-e OPENAI_API_KEY="sk-your-openai-api-key"`: Sets the environment variable `OPENAI_API_KEY` to the value you want inside the Docker container. **Remember to replace `sk-your-openai-api-key` with your actual OpenAI API key.**
+- `cv-helper`: Specifies the name of the Docker image to run.
 
-    ```bash
-        docker run -d -p 8501:8501 --env-file .env cv-helper
-    ```
+**Note:** When running the Docker container, instead of passing environment variables directly as shown above, you can also mount a `.env` file into the container. If you choose this approach, create a `.env` file in your root directory with your configurations and mount this file using the following command structure:
 
-    When using this command, the `-e` flag is not required, all the required environemnt varibles are passed from the `.env` file that you created.
+```bash
+    docker run -d -p 8501:8501 --env-file .env cv-helper
+```
 
-    The Streamlit application will be available at `http://localhost:8501` in your browser.
+When using this command, the `-e` flag is not required, all the required environemnt varibles are passed from the `.env` file that you created.
+
+The Streamlit application will be available at `http://localhost:8501` in your browser.
 
 ### Example Usage
 
