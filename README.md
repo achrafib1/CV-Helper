@@ -23,7 +23,9 @@ This project provides a chatbot that helps users assess how well their CV matche
 - **Git** - For version control.
 - **Docker** - For containerization (if using the Docker approach).
 - **A valid API key for your chosen AI Platform with LLM Support (OpenAI API key):** You will need an API key to run the LLM, which should be defined in a `.env` file or as environment variables (if using Docker).
+
   **Note**: This project is not limited to one LLM provider and you can choose any AI Platform with LLM Support that suits your need, common AI Platforms with LLM support are OpenAI, Google AI (Gemini), Anthropic, Mistral AI, and Hugging Face.
+
   **However, note that the AI Platform with LLM Support must be compatible and supported by the CrewAI framework that is used by this project. Check the CrewAI official documentation for supported LLM providers.**.
 
 ### Installation
