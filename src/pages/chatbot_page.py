@@ -7,9 +7,9 @@ import asyncio
 
 st.set_page_config(page_title="chatbot_page", layout="wide")
 st.markdown(
-        "<style>  ul[data-testid=stSidebarNavItems]  {display: none;} </style>",
-        unsafe_allow_html=True,
-    )
+    "<style>  ul[data-testid=stSidebarNavItems]  {display: none;} </style>",
+    unsafe_allow_html=True,
+)
 
 load_dotenv()
 
@@ -45,7 +45,10 @@ async def run_chatbot(user_input):
         assistant_messages = memory.get_all(user_id="Assistant")
 
         # Combine and format context from both user and assistant memories
-        context = "\\n".join([message["memory"] for message in user_messages] + [message["memory"] for message in assistant_messages])
+        context = "\\n".join(
+            [message["memory"] for message in user_messages]
+            + [message["memory"] for message in assistant_messages]
+        )
 
         inputs = {
             "user_message": f"{user_input}",
@@ -56,7 +59,6 @@ async def run_chatbot(user_input):
         # Add chatbot response to memory
         memory.add(f"Assistant: {response}", user_id="Assistant")
         return response
-
 
 
 st.title("CV Helper Chatbot")
@@ -75,7 +77,3 @@ if prompt := st.chat_input("Type your message here..."):
 
     # Append chatbot's response to chat history
     st.session_state.chat_history.append({"role": "assistant", "content": response})
-    # Display Chat History
-    for message in st.session_state.chat_history:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
