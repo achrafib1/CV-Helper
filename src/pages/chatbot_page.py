@@ -34,30 +34,53 @@ if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
 
-async def run_chatbot(user_input):
-    """Runs the chatbot and returns the response."""
-    with st.spinner("Generating Response..."):
+async def get_chatbot_response(user_input):
+    """Retrieves a response from the chatbot based on user input."""
+    try:
         # Add user input to memory
         memory.add(f"User: {user_input}", user_id="Lennex")
 
-        # Retrieve all user and assistant messages for the current conversation
-        user_messages = memory.get_all(user_id="Lennex")
-        assistant_messages = memory.get_all(user_id="Assistant")
+        # Retrieve context from memory
+        context = get_context_for_response(user_input)
 
-        # Combine and format context from both user and assistant memories
-        context = "\\n".join(
-            [message["memory"] for message in user_messages]
-            + [message["memory"] for message in assistant_messages]
-        )
+        # Prepare input for CrewAI
+        inputs = {"user_message": user_input, "context": context}
 
-        inputs = {
-            "user_message": f"{user_input}",
-            "context": f"{context}",
-        }
+        # Get the response
         response = CVHelper().crew().kickoff(inputs=inputs)
 
         # Add chatbot response to memory
         memory.add(f"Assistant: {response}", user_id="Assistant")
+        return response
+
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+        return "Oops, something went wrong. Please try again."
+
+
+def get_context_for_response(user_input, k=3):
+    """Retrieves the appropriate context for the response.
+    It retrieves  messages from user and assistant chats along with relevant context for the user input
+    """
+    # Retrieve latest messages
+    user_messages = memory.get_all(user_id="Lennex")
+    assistant_messages = memory.get_all(user_id="Assistant")
+
+    # Format and Combine the Context messages from user and assistant
+    formatted_messages = []
+    for message in user_messages:
+        formatted_messages.append(f"User: {message['memory']}")
+    for message in assistant_messages:
+        formatted_messages.append(f"Assistant: {message['memory']}")
+    context = "\n".join(formatted_messages)
+
+    return context
+
+
+async def run_chatbot(user_input):
+    """Runs the chatbot and returns the response."""
+    with st.spinner("Generating Response..."):
+        response = await get_chatbot_response(user_input)
         return response
 
 
